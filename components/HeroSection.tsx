@@ -170,27 +170,6 @@ export default function HeroSection() {
                 <span>Explore Programs</span>
               </a>
             </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.4 }}
-              className="flex flex-wrap gap-6"
-            >
-              {[
-                { value: 10000, suffix: "+", label: "Students Reached" },
-                { value: 200, suffix: "+", label: "Workshops" },
-                { value: 50, suffix: "+", label: "Communities" },
-              ].map(({ value, suffix, label }) => (
-                <div key={label} className="text-center">
-                  <div className="text-2xl font-extrabold" style={{ color: "#F59E0B" }}>
-                    <Counter target={value} suffix={suffix} />
-                  </div>
-                  <div className="text-xs font-medium text-slate-500 mt-0.5">{label}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           {/* RIGHT: Children image */}
