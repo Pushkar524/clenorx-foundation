@@ -49,7 +49,7 @@ export default function VolunteerSection() {
   };
 
   return (
-    <section id="volunteer" className="section-padding bg-slate-50 dark:bg-slate-950">
+    <section id="volunteer" className="section-padding bg-transparent">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 28 }}

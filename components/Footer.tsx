@@ -24,7 +24,7 @@ const SOCIALS = [
   { icon: Facebook, href: "#", label: "Facebook", color: "hover:bg-blue-600" },
   { icon: Twitter, href: "#", label: "Twitter / X", color: "hover:bg-sky-500" },
   { icon: Instagram, href: "#", label: "Instagram", color: "hover:bg-pink-600" },
-  { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:bg-blue-700" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/clenorxfoundation", label: "LinkedIn", color: "hover:bg-blue-700" },
   { icon: Youtube, href: "#", label: "YouTube", color: "hover:bg-red-600" },
 ];
 
@@ -65,6 +65,8 @@ export default function Footer() {
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className={`w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center transition-all ${color} hover:text-white hover:scale-110`}
                 >
@@ -165,8 +167,22 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="pt-6 pb-5 text-center text-sm text-slate-400">
+          <p>
+            Designed By{" "}
+            <a
+                href="https://thenexturl.com"
+              target="_blank"
+              rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 font-semibold text-base link-glow"
+            >
+              TheNextUrl
+            </a>
+          </p>
+        </div>
+
         {/* Bottom bar */}
-        <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500">
           <p>{t.footer_rights}</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>

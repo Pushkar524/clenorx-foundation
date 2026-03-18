@@ -29,28 +29,28 @@ export default function ContactSection() {
     {
       icon: MapPin,
       label: "Address",
-      value: "Devaraj Aras Nagar, Opp. Marikamba Temple,\nShikaripura – 577427, Karnataka",
+      value: "Devaraj Aras Nagar, Opp. Marikamba Temple,\nShikaripura - 577427, Karnataka",
       color: "text-blue-600",
-      bg: "bg-blue-50 dark:bg-blue-900/20",
+      bg: "bg-blue-50",
     },
     {
       icon: Phone,
       label: "Phone",
       value: "+91 97430 85298\n+91 95916 01735",
-      color: "text-green-600",
-      bg: "bg-green-50 dark:bg-green-900/20",
+      color: "text-orange-600",
+      bg: "bg-orange-50",
     },
     {
       icon: Mail,
       label: "Email",
       value: "clenorxfoundation30@gmail.com",
       color: "text-amber-600",
-      bg: "bg-amber-50 dark:bg-amber-900/20",
+      bg: "bg-amber-50",
     },
   ];
 
   return (
-    <section id="contact" className="section-padding bg-white dark:bg-slate-900">
+    <section id="contact" className="section-padding bg-transparent">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,10 +59,10 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300 text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-semibold mb-4">
             Say Hello
           </span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#1E3A5F] dark:text-white mb-4">
             {t.contact_title}
           </h2>
         </motion.div>
@@ -77,13 +77,13 @@ export default function ContactSection() {
             className="space-y-6"
           >
             {CONTACT_INFO.map(({ icon: Icon, label, value, color, bg }) => (
-              <div key={label} className={`${bg} rounded-2xl p-5 flex items-start gap-4`}>
-                <div className={`w-11 h-11 rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm shrink-0`}>
+              <div key={label} className={`${bg} dark:bg-slate-800 rounded-2xl p-5 flex items-start gap-4 border border-slate-100 dark:border-slate-700`}>
+                <div className="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 flex items-center justify-center shadow-sm shrink-0">
                   <Icon className={color} size={20} />
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">{label}</p>
-                  <p className="text-slate-800 dark:text-white font-medium whitespace-pre-line">{value}</p>
+                  <p className="text-slate-800 dark:text-slate-100 font-medium whitespace-pre-line">{value}</p>
                 </div>
               </div>
             ))}
@@ -112,7 +112,7 @@ export default function ContactSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-slate-50 dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 space-y-5"
+              className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 space-y-5"
             >
               <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">Send Us a Message</h3>
 
@@ -123,7 +123,7 @@ export default function ContactSection() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Full name"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-white placeholder:text-slate-400 focus:border-blue-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-white placeholder:text-slate-400 focus:border-orange-500 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -134,7 +134,7 @@ export default function ContactSection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-white placeholder:text-slate-400 focus:border-blue-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-white placeholder:text-slate-400 focus:border-orange-500 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -145,14 +145,15 @@ export default function ContactSection() {
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="How can we help you?"
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-white placeholder:text-slate-400 focus:border-blue-500 focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-white placeholder:text-slate-400 focus:border-orange-500 focus:outline-none transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl flex items-center justify-center gap-2 transition-all hover:shadow-lg disabled:opacity-60"
+                className="w-full py-4 text-white font-bold rounded-2xl flex items-center justify-center gap-2 transition-all hover:shadow-lg disabled:opacity-60"
+                style={{ background: "#F59E0B" }}
               >
                 {loading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
                 {loading ? "Sending..." : "Send Message"}

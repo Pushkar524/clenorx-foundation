@@ -32,20 +32,9 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
   return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
 }
 
-/* Decorative floating shape */
-function Shape({ className, delay = 0, duration = 4 }: { className: string; delay?: number; duration?: number }) {
-  return (
-    <motion.div
-      animate={{ y: [0, -14, 0], rotate: [0, 8, -8, 0] }}
-      transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
-      className={className}
-    />
-  );
-}
-
 export default function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden bg-white">
+    <section id="home" className="relative min-h-screen overflow-hidden bg-white dark:bg-slate-950 pt-20 lg:pt-32">
 
       {/* ── Floating gradient blobs ── */}
       <div className="bg-blob blob-animate w-80 h-80 rounded-full" style={{ background: "#BFDBFE", top: "-4rem", left: "-5rem" }} />
@@ -54,22 +43,22 @@ export default function HeroSection() {
 
       {/* ── Decorative background floating shapes ── */}
       {/* Hearts */}
-      <Shape delay={0} duration={4.5}
-        className="absolute top-24 left-[8%] w-8 h-8 text-orange-400 opacity-60"
-      />
-      <Shape delay={1} duration={5}
-        className="absolute top-40 left-[18%] w-5 h-5 text-orange-300 opacity-50"
-      />
-      <Shape delay={0.5} duration={3.8}
-        className="absolute bottom-32 left-[12%] w-6 h-6 text-yellow-400 opacity-50"
-      />
+      <motion.div animate={{ y: [0, -10, 0], rotate: [0, 8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-24 left-[8%] text-orange-400 opacity-70">
+        <Heart size={26} fill="currentColor" />
+      </motion.div>
+      <motion.div animate={{ y: [0, -8, 0], rotate: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute top-40 left-[18%] text-orange-300 opacity-60">
+        <Heart size={18} fill="currentColor" />
+      </motion.div>
+      <motion.div animate={{ y: [0, -12, 0], rotate: [0, 9, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} className="absolute bottom-32 left-[12%] text-amber-400 opacity-60">
+        <Heart size={20} fill="currentColor" />
+      </motion.div>
 
       {/* Colored dots */}
-      <div className="absolute top-36 left-[30%] w-4 h-4 rounded-full bg-blue-300 opacity-50" />
-      <div className="absolute top-72 left-[5%] w-3 h-3 rounded-full bg-orange-300 opacity-60" />
-      <div className="absolute bottom-48 left-[25%] w-5 h-5 rounded-full bg-amber-300 opacity-40" />
-      <div className="absolute top-20 right-[5%] w-4 h-4 rounded-full bg-blue-200 opacity-50" />
-      <div className="absolute bottom-24 right-[8%] w-3 h-3 rounded-full bg-orange-200 opacity-60" />
+      <motion.div animate={{ y: [0, -10, 0], opacity: [0.35, 0.7, 0.35] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-36 left-[30%] w-4 h-4 rounded-full bg-blue-300" />
+      <motion.div animate={{ y: [0, 8, 0], opacity: [0.4, 0.75, 0.4] }} transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.9 }} className="absolute top-72 left-[5%] w-3 h-3 rounded-full bg-orange-300" />
+      <motion.div animate={{ y: [0, -12, 0], opacity: [0.25, 0.6, 0.25] }} transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }} className="absolute bottom-48 left-[25%] w-5 h-5 rounded-full bg-amber-300" />
+      <motion.div animate={{ y: [0, 6, 0], opacity: [0.3, 0.65, 0.3] }} transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }} className="absolute top-20 right-[5%] w-4 h-4 rounded-full bg-blue-200" />
+      <motion.div animate={{ y: [0, -9, 0], opacity: [0.35, 0.8, 0.35] }} transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }} className="absolute bottom-24 right-[8%] w-3 h-3 rounded-full bg-orange-200" />
 
       {/* Dashed circle */}
       <div className="absolute hidden lg:block bottom-24 left-[28%] w-28 h-28 rounded-full border-2 border-dashed border-orange-200 opacity-40" />
@@ -93,23 +82,23 @@ export default function HeroSection() {
       </svg>
 
       {/* Flower / plus shapes */}
-      <svg className="absolute top-[45%] left-[3%] w-8 h-8 opacity-30" viewBox="0 0 24 24" fill="#3B82F6">
+      <motion.svg animate={{ y: [0, -12, 0], rotate: [0, 12, 0] }} transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[45%] left-[3%] w-8 h-8 opacity-35" viewBox="0 0 24 24" fill="#3B82F6">
         <circle cx="12" cy="7" r="3" /><circle cx="12" cy="17" r="3" />
         <circle cx="7" cy="12" r="3" /><circle cx="17" cy="12" r="3" />
         <circle cx="12" cy="12" r="2" />
-      </svg>
-      <svg className="absolute bottom-28 right-[30%] w-7 h-7 opacity-25" viewBox="0 0 24 24" fill="#F59E0B">
+      </motion.svg>
+      <motion.svg animate={{ y: [0, 10, 0], rotate: [0, -14, 0] }} transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.7 }} className="absolute bottom-28 right-[30%] w-7 h-7 opacity-30" viewBox="0 0 24 24" fill="#F59E0B">
         <circle cx="12" cy="7" r="3" /><circle cx="12" cy="17" r="3" />
         <circle cx="7" cy="12" r="3" /><circle cx="17" cy="12" r="3" />
         <circle cx="12" cy="12" r="2" />
-      </svg>
+      </motion.svg>
 
       {/* ── Main grid ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full py-24 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full py-12 lg:py-0">
 
           {/* LEFT: Text content */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -131,7 +120,7 @@ export default function HeroSection() {
                 morphTime={1.2}
                 cooldownTime={2.5}
                 className="h-[72px] sm:h-[84px] xl:h-[96px]"
-                textClassName="font-extrabold text-4xl sm:text-5xl xl:text-6xl leading-tight tracking-tight text-[#1E3A5F] [text-shadow:0_1px_0_#2563eb,0_2px_0_#1d4ed8,0_3px_0_#1e40af,0_4px_8px_rgba(30,58,95,0.25),0_8px_20px_rgba(245,158,11,0.18)]"
+                textClassName="font-extrabold text-4xl sm:text-5xl xl:text-6xl leading-tight tracking-tight text-slate-900 dark:text-slate-50 [text-shadow:0_2px_10px_rgba(15,23,42,0.14)]"
               />
             </motion.div>
 
@@ -186,7 +175,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="order-1 lg:order-2 relative flex items-center justify-center"
+            className="order-2 lg:order-2 relative flex items-center justify-center"
           >
             {/* Glow blob behind image */}
             <div

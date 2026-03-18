@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { CircularTestimonials } from "@/components/ui/circular-testimonials";
 
 const TEAM = [
@@ -10,8 +12,8 @@ const TEAM = [
     designation: "Founder & CEO",
     quote:
       "Passionate about empowering rural communities through financial literacy and sustainable education. Every workshop we run is a step towards a more equitable India.",
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&crop=face",
-    linkedin: "https://www.linkedin.com/feed/",
+    src: "/pavan-naik.jpeg",
+    linkedin: "https://www.linkedin.com/in/pavan-m-naik-44b53b143",
   },
   {
     name: "Praveena K",
@@ -24,8 +26,17 @@ const TEAM = [
 ];
 
 export default function TeamSection() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
   return (
-    <section id="team" className="section-padding bg-white">
+    <section id="team" className="section-padding bg-transparent">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -34,14 +45,14 @@ export default function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-4">
             Leadership
           </span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold mb-4" style={{ color: "#1E3A5F" }}>
+          <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 text-[#1E3A5F] dark:text-white">
             Meet Our Team
           </h2>
           <div className="heading-accent mx-auto mb-4" />
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-500 dark:text-slate-300 max-w-2xl mx-auto">
             Driven by purpose &mdash; committed to transforming financial futures in rural India.
           </p>
         </motion.div>
@@ -51,10 +62,10 @@ export default function TeamSection() {
             testimonials={TEAM}
             autoplay
             colors={{
-              name: "#1E3A5F",
+              name: isDark ? "#F8FAFC" : "#1E3A5F",
               designation: "#F59E0B",
-              testimony: "#475569",
-              arrowBackground: "#1E3A5F",
+              testimony: isDark ? "#CBD5E1" : "#475569",
+              arrowBackground: isDark ? "#334155" : "#1E3A5F",
               arrowForeground: "#ffffff",
               arrowHoverBackground: "#F59E0B",
             }}
@@ -72,7 +83,7 @@ export default function TeamSection() {
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1E3A5F] hover:bg-[#F59E0B] text-white text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1E3A5F] dark:bg-slate-700 hover:bg-[#F59E0B] text-white text-sm font-semibold transition-colors"
               >
                 <Linkedin size={16} />
                 {member.name}

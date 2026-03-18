@@ -5,7 +5,7 @@ import { Clock, BarChart3 } from "lucide-react";
 
 export default function ImpactDashboard() {
   return (
-    <section id="impact" className="section-padding bg-slate-50 dark:bg-slate-950">
+    <section id="impact" className="section-padding bg-transparent">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-4">

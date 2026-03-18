@@ -39,13 +39,13 @@ export const TestimonialSection = ({
   testimonials,
 }: TestimonialSectionProps) => {
   return (
-    <section className="w-full bg-[#F8FAFC] py-16 sm:py-24">
+    <section className="w-full bg-transparent py-16 sm:py-24">
       <div className="container mx-auto max-w-6xl px-4 text-center">
         {/* Section Header */}
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1E3A5F" }}>
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-[#1E3A5F] dark:text-white">
           {title}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500 dark:text-slate-300">
           {subtitle}
         </p>
 

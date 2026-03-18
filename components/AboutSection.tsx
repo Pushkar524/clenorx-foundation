@@ -1,8 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { Flame, Eye, Target, HelpCircle } from "lucide-react";
+import {
+  Flame, Eye, Target, HelpCircle,
+  BookOpen, Wifi, Users, CheckCircle,
+  Award, Calendar, TrendingUp, Star, Sparkles,
+} from "lucide-react";
+import AboutUsSection from "@/components/ui/about-us-section";
 import { TestimonialsWithMarquee } from "@/components/ui/testimonials-with-marquee";
 
 const ABOUT_CARDS = [
@@ -56,163 +59,87 @@ const ABOUT_CARDS = [
   },
 ];
 
-const fade = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 0.6, delay: i * 0.12 } }),
-};
-
-const PILLARS = [
+const SERVICES = [
   {
-    icon: Flame,
+    icon: <Flame className="w-6 h-6" />,
+    secondaryIcon: <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />,
     title: "Our Goal",
-    body: "To enhance the quality of life of school and college students by equipping them with Financial knowledge, Essential life skills, Wellness practices, and Adolescent Health awareness to build confident and capable citizens.",
-    bg: "#EFF6FF",
-    iconBg: "#DBEAFE",
+    description:
+      "Enhance the quality of life of students by equipping them with financial knowledge, essential life skills, wellness practices, and adolescent health awareness — building confident, capable citizens.",
+    position: "left" as const,
   },
   {
-    icon: Eye,
+    icon: <Eye className="w-6 h-6" />,
+    secondaryIcon: <CheckCircle className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />,
     title: "Our Vision",
-    body: "To promote awareness, education, and well-being for the benefit of society at large.",
-    bg: "#EFF6FF",
-    iconBg: "#DBEAFE",
+    description:
+      "To promote awareness, education, and well-being for the benefit of society at large — creating a financially literate generation across rural and Tier 3 India.",
+    position: "left" as const,
   },
   {
-    icon: Target,
+    icon: <Target className="w-6 h-6" />,
+    secondaryIcon: <Star className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />,
     title: "Our Mission",
-    body: "To educate and empower individuals to make informed and responsible financial decisions.",
-    bg: "#EFF6FF",
-    iconBg: "#DBEAFE",
+    description:
+      "To educate and empower individuals to make informed and responsible financial decisions that improve their lives, their families, and their communities.",
+    position: "left" as const,
   },
   {
-    icon: HelpCircle,
-    title: "Why Fin. Literacy?",
-    body: "Financial literacy is the foundation of a secure and independent life — empowering students to make informed decisions, avoid debt traps, and build a stable financial future.",
-    bg: "#EFF6FF",
-    iconBg: "#DBEAFE",
+    icon: <HelpCircle className="w-6 h-6" />,
+    secondaryIcon: <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />,
+    title: "Why Fin. Literacy",
+    description:
+      "Financial literacy is a necessity in today's digital economy — knowing how to save, budget, invest, and bank safely shapes responsible citizens and breaks cycles of poverty.",
+    position: "right" as const,
   },
+  {
+    icon: <BookOpen className="w-6 h-6" />,
+    secondaryIcon: <CheckCircle className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />,
+    title: "Who We Serve",
+    description:
+      "School & college students, Self-Help Groups (SHGs), and rural communities across Karnataka — especially in Tier 3 cities and villages where financial awareness is critically low.",
+    position: "right" as const,
+  },
+  {
+    icon: <Wifi className="w-6 h-6" />,
+    secondaryIcon: <Star className="w-4 h-4 absolute -top-1 -right-1 text-[#A9BBC8]" />,
+    title: "Our Approach",
+    description:
+      "Interactive workshops, digital banking camps, entrepreneurship seed programmes, and community-led SHG training — all delivered in local languages for maximum impact.",
+    position: "right" as const,
+  },
+];
+
+const STATS = [
+  { icon: <Award className="w-6 h-6" />, value: 200, label: "Workshops Conducted", suffix: "+" },
+  { icon: <Users className="w-6 h-6" />, value: 10000, label: "Students Reached", suffix: "+" },
+  { icon: <Calendar className="w-6 h-6" />, value: 3, label: "Years of Impact", suffix: "" },
+  { icon: <TrendingUp className="w-6 h-6" />, value: 50, label: "Communities Served", suffix: "+" },
 ];
 
 export default function AboutSection() {
   return (
-    <section id="about" className="section-padding bg-[#F8FAFC]">
-      <div className="max-w-7xl mx-auto">
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
-          {/* LEFT */}
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-sm font-bold tracking-widest uppercase mb-3"
-              style={{ color: "#F59E0B" }}
-            >
-              Our Mission
-            </motion.p>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl sm:text-4xl font-extrabold mb-4"
-              style={{ color: "#1E3A5F" }}
-            >
-              About ClenorX Foundation
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-slate-500 leading-relaxed mb-8 text-base"
-            >
-              ClenorX Foundation is a not-for-profit organization committed to building financial awareness among children and Self-Help Groups (SHGs) in rural and Tier 3 communities. We believe that financial literacy is not a privilege &mdash; it is a life skill. In many rural and semi-urban areas, children grow up without basic knowledge of saving, budgeting, banking, and responsible investing.
-            </motion.p>
-
-            {/* Cards grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {PILLARS.map(({ icon: Icon, title, body, bg, iconBg }, i) => (
-                <motion.div
-                  key={title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  variants={fade}
-                  className="rounded-2xl p-5 shadow-sm border border-blue-50 glass-card"
-                  style={{ background: bg }}
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-3 shadow-sm"
-                    style={{ background: iconBg }}
-                  >
-                    <Icon size={18} color="#3B82F6" />
-                  </div>
-                  <h3 className="font-bold text-sm mb-1.5" style={{ color: "#1E3A5F" }}>{title}</h3>
-                  <p className="text-slate-500 text-xs leading-relaxed">{body}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT: image + Why Financial Literacy */}
-          <div>
-            {/* Main image */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="rounded-3xl overflow-hidden shadow-xl mb-6 glass-card"
-              style={{ maxHeight: 340 }}
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80"
-                alt="Indian children smiling"
-                width={600}
-                height={340}
-                className="w-full object-cover"
-                style={{ height: 280 }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </motion.div>
-
-            {/* Why Financial Literacy card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="rounded-2xl p-6 shadow-sm border border-blue-50 bg-white"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-xl shadow-sm"
-                  style={{ background: "#FEF3C7" }}
-                >
-                  <HelpCircle size={20} style={{ color: "#F59E0B" }} />
-                </div>
-                <h3 className="font-bold text-base" style={{ color: "#1E3A5F" }}>Why Financial Literacy?</h3>
-              </div>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Financial literacy is the foundation of a secure and independent life. It empowers individuals &mdash; especially young students &mdash; to understand money, make informed decisions, avoid debt traps, and build a stable financial future.
-                In today&apos;s fast-changing digital economy, knowing how to save, budget, invest, and use banking services safely is not a luxury &mdash; it is a necessity. By teaching financial literacy early, we are not just educating minds &mdash; we are shaping responsible citizens and building a financially confident nation.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-      {/* About content marquee */}
+    <section id="about">
+      <AboutUsSection
+        tagline="DISCOVER OUR STORY"
+        heading="About ClenorX Foundation"
+        description="ClenorX Foundation is a not-for-profit organization committed to building financial awareness among children and Self-Help Groups (SHGs) in rural and Tier 3 communities. We believe that financial literacy is not a privilege — it is a life skill."
+        imageSrc="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
+        imageAlt="Indian children smiling"
+        services={SERVICES}
+        stats={STATS}
+        ctaHeading="Ready to make a difference?"
+        ctaSubtext="Join us in building a financially literate generation across India."
+        ctaButtonLabel="Get Involved"
+        ctaButtonHref="#volunteer"
+      />
       <TestimonialsWithMarquee
         title="What We Stand For"
         description="Our goal, vision, mission and approach — the values that drive every workshop, camp and community we touch across Karnataka."
         testimonials={ABOUT_CARDS}
-        className="bg-[#F8FAFC] py-8 sm:py-16"
+        className="py-8 sm:py-16"
       />
     </section>
   );
 }
+

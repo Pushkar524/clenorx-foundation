@@ -27,12 +27,13 @@ const LANGS: { code: Lang; label: string }[] = [
 ];
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const { lang, setLang } = useLang();
   const t = translations[lang];
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -40,13 +41,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-xl border-b border-white/35",
         scrolled
-          ? "bg-white shadow-md py-3"
-          : "py-5 bg-white/80 backdrop-blur-md"
+          ? "bg-orange-500/24 dark:bg-orange-600/30 shadow-lg py-3"
+          : "py-5 bg-orange-500/16 dark:bg-orange-600/20"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
@@ -69,7 +76,7 @@ export default function Navbar() {
             <li key={link.key}>
               <a
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-slate-600 hover:text-orange-500 rounded-lg hover:bg-orange-50 transition-all"
+                className="px-3 py-2 text-sm font-semibold text-slate-900 dark:text-orange-50 hover:text-orange-700 dark:hover:text-amber-100 rounded-lg hover:bg-white/35 dark:hover:bg-white/10 transition-all"
               >
                 {t[link.key]}
               </a>
@@ -83,7 +90,7 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-orange-50 hover:text-orange-600 transition-all"
+              className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold text-slate-900 dark:text-orange-50 hover:bg-white/35 dark:hover:bg-white/10 transition-all"
               aria-label="Select language"
             >
               <Globe size={16} />
@@ -95,15 +102,15 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
-                  className="absolute right-0 mt-2 w-28 rounded-xl glass shadow-xl overflow-hidden"
+                  className="absolute right-0 mt-2 w-28 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-xl overflow-hidden border border-white/20"
                 >
                   {LANGS.map((l) => (
                     <button
                       key={l.code}
                       onClick={() => { setLang(l.code); setLangOpen(false); }}
                       className={cn(
-                        "w-full px-4 py-2 text-sm text-left hover:bg-orange-50 transition-colors",
-                        lang === l.code ? "text-orange-600 font-semibold" : "text-slate-700"
+                        "w-full px-4 py-2 text-sm text-left hover:bg-orange-50 dark:hover:bg-slate-800 transition-colors",
+                        lang === l.code ? "text-orange-600 font-semibold" : "text-slate-700 dark:text-slate-300"
                       )}
                     >
                       {l.label}
@@ -116,11 +123,11 @@ export default function Navbar() {
 
           {/* Theme Toggle */}
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-lg text-slate-600 hover:bg-orange-50 hover:text-orange-500 transition-all"
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            className="p-2 rounded-lg text-slate-900 dark:text-orange-50 hover:bg-white/35 dark:hover:bg-white/10 transition-all"
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            {!mounted ? <Moon size={18} /> : isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
           {/* Donate CTA */}
@@ -132,7 +139,7 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-lg text-slate-600"
+            className="lg:hidden p-2 rounded-lg text-slate-900 dark:text-orange-50"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -147,7 +154,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-slate-100 shadow-lg mt-2"
+            className="lg:hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 shadow-lg mt-2"
           >
             <ul className="flex flex-col p-4 gap-1">
               {NAV_LINKS.map((link) => (
@@ -155,7 +162,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 text-sm font-medium text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all"
+                    className="block px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-orange-600 hover:bg-orange-50 dark:hover:bg-slate-800 rounded-lg transition-all"
                   >
                     {t[link.key]}
                   </a>
