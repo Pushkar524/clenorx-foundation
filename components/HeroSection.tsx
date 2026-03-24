@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
 import Image from "next/image";
 import { Nunito } from "next/font/google";
 
@@ -64,46 +63,15 @@ export default function HeroSection() {
       <div className="bg-blob w-72 h-72 rounded-full" style={{ background: "#DBEAFE", bottom: "0", left: "30%" }} />
 
       {/* ── Decorative background floating shapes ── */}
-      {/* Hearts */}
-      <motion.div animate={{ y: [0, -10, 0], rotate: [0, 8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-24 left-[8%] text-orange-400 opacity-70">
-        <Heart size={26} fill="currentColor" />
-      </motion.div>
-      <motion.div animate={{ y: [0, -8, 0], rotate: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute top-40 left-[18%] text-orange-300 opacity-60">
-        <Heart size={18} fill="currentColor" />
-      </motion.div>
-      <motion.div animate={{ y: [0, -12, 0], rotate: [0, 9, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} className="absolute bottom-32 left-[12%] text-amber-400 opacity-60">
-        <Heart size={20} fill="currentColor" />
-      </motion.div>
+      {/* Decorative shapes (hearts removed) */}
 
-      {/* Colored dots */}
+      {/* Colored dots - reduced for cleaner look */}
       <motion.div animate={{ y: [0, -10, 0], opacity: [0.35, 0.7, 0.35] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-36 left-[30%] w-4 h-4 rounded-full bg-blue-300" />
       <motion.div animate={{ y: [0, 8, 0], opacity: [0.4, 0.75, 0.4] }} transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.9 }} className="absolute top-72 left-[5%] w-3 h-3 rounded-full bg-orange-300" />
-      <motion.div animate={{ y: [0, -12, 0], opacity: [0.25, 0.6, 0.25] }} transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }} className="absolute bottom-48 left-[25%] w-5 h-5 rounded-full bg-amber-300" />
-      <motion.div animate={{ y: [0, 6, 0], opacity: [0.3, 0.65, 0.3] }} transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }} className="absolute top-20 right-[5%] w-4 h-4 rounded-full bg-blue-200" />
-      <motion.div animate={{ y: [0, -9, 0], opacity: [0.35, 0.8, 0.35] }} transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }} className="absolute bottom-24 right-[8%] w-3 h-3 rounded-full bg-orange-200" />
 
-      {/* Dashed circle */}
-      <div className="absolute hidden lg:block bottom-24 left-[28%] w-28 h-28 rounded-full border-2 border-dashed border-orange-200 opacity-40" />
-      <div className="absolute hidden lg:block top-28 left-[38%] w-16 h-16 rounded-full border-2 border-dashed border-blue-200 opacity-40" />
+      {/* SVG stars - removed for cleaner look */}
 
-      {/* SVG hearts / stars scattered */}
-      <svg className="absolute top-28 left-[14%] w-7 h-7 opacity-50" viewBox="0 0 24 24" fill="#F59E0B">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-      </svg>
-      <svg className="absolute top-16 right-[28%] w-5 h-5 opacity-40" viewBox="0 0 24 24" fill="#3B82F6">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-      </svg>
-      <svg className="absolute bottom-36 left-[6%] w-6 h-6 opacity-40" viewBox="0 0 24 24" fill="#F59E0B">
-        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-      </svg>
-      <svg className="absolute top-32 right-[38%] w-4 h-4 opacity-30" viewBox="0 0 24 24" fill="#F59E0B">
-        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-      </svg>
-      <svg className="absolute bottom-16 right-[20%] w-5 h-5 opacity-35" viewBox="0 0 24 24" fill="#3B82F6">
-        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-      </svg>
-
-      {/* Flower / plus shapes */}
+      {/* Flower / plus shapes - kept for visual interest */}
       <motion.svg animate={{ y: [0, -12, 0], rotate: [0, 12, 0] }} transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[45%] left-[3%] w-8 h-8 opacity-35" viewBox="0 0 24 24" fill="#3B82F6">
         <circle cx="12" cy="7" r="3" /><circle cx="12" cy="17" r="3" />
         <circle cx="7" cy="12" r="3" /><circle cx="17" cy="12" r="3" />
@@ -163,7 +131,6 @@ export default function HeroSection() {
               className="flex flex-wrap gap-3 mb-12"
             >
               <a href="#donate" className="btn-pill btn-primary inline-flex items-center">
-                <Heart size={18} />
                 <span>Donate Now</span>
               </a>
               <a href="#about" className="btn-pill btn-secondary inline-flex items-center">
@@ -212,7 +179,7 @@ export default function HeroSection() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -left-6 bg-white rounded-2xl shadow-xl px-5 py-3 border border-orange-100 flex items-center gap-3"
+                className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-6 bg-white rounded-2xl shadow-xl px-5 py-3 border border-orange-100 flex items-center gap-3"
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#FEF3C7" }}>
                   <svg viewBox="0 0 24 24" fill="#F59E0B" className="w-5 h-5">
@@ -228,7 +195,7 @@ export default function HeroSection() {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl px-5 py-3 border border-blue-100 flex items-center gap-3"
+                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-white rounded-2xl shadow-xl px-5 py-3 border border-blue-100 flex items-center gap-3"
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "#DBEAFE" }}>
                   <svg viewBox="0 0 24 24" fill="#3B82F6" className="w-5 h-5">

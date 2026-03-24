@@ -56,10 +56,11 @@ export default function Navbar() {
           : "py-5 bg-orange-500/16 dark:bg-orange-600/20"
       )}
     >
+      {/* top header removed per request */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-3 group">
-          <div className="relative h-16 w-16 sm:h-[68px] sm:w-[68px]">
+          <div className="relative h-20 w-20 sm:h-[88px] sm:w-[88px]">
             <Image
               src="/logo.png"
               alt="ClenorX Foundation"
@@ -76,7 +77,7 @@ export default function Navbar() {
             <li key={link.key}>
               <a
                 href={link.href}
-                className="px-3 py-2 text-sm font-semibold text-slate-900 dark:text-orange-50 hover:text-orange-700 dark:hover:text-amber-100 rounded-lg hover:bg-white/35 dark:hover:bg-white/10 transition-all"
+                className="px-3 py-2 text-sm font-semibold text-slate-900 dark:text-orange-50 hover:text-orange-700 dark:hover:text-amber-100 rounded-lg hover:bg-white/35 dark:hover:bg-white/10 transition-all focus:ring-2 focus:ring-orange-500 focus:outline-none"
               >
                 {t[link.key]}
               </a>
@@ -90,7 +91,7 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold text-slate-900 dark:text-orange-50 hover:bg-white/35 dark:hover:bg-white/10 transition-all"
+              className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold text-slate-900 dark:text-orange-50 hover:bg-white/35 dark:hover:bg-white/10 transition-all focus:ring-2 focus:ring-orange-500 focus:outline-none"
               aria-label="Select language"
             >
               <Globe size={16} />
@@ -109,7 +110,7 @@ export default function Navbar() {
                       key={l.code}
                       onClick={() => { setLang(l.code); setLangOpen(false); }}
                       className={cn(
-                        "w-full px-4 py-2 text-sm text-left hover:bg-orange-50 dark:hover:bg-slate-800 transition-colors",
+                        "w-full px-4 py-2 text-sm text-left hover:bg-orange-50 dark:hover:bg-slate-800 transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none",
                         lang === l.code ? "text-orange-600 font-semibold" : "text-slate-700 dark:text-slate-300"
                       )}
                     >
@@ -124,7 +125,7 @@ export default function Navbar() {
           {/* Theme Toggle */}
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="p-2 rounded-lg text-slate-900 dark:text-orange-50 hover:bg-white/35 dark:hover:bg-white/10 transition-all"
+            className="p-2 rounded-lg text-slate-900 dark:text-orange-50 hover:bg-white/35 dark:hover:bg-white/10 transition-all focus:ring-2 focus:ring-orange-500 focus:outline-none"
             aria-label="Toggle theme"
           >
             {!mounted ? <Moon size={18} /> : isDark ? <Sun size={18} /> : <Moon size={18} />}
@@ -139,7 +140,7 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-lg text-slate-900 dark:text-orange-50"
+            className="lg:hidden p-2 rounded-lg text-slate-900 dark:text-orange-50 focus:ring-2 focus:ring-orange-500 focus:outline-none"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -162,7 +163,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-orange-600 hover:bg-orange-50 dark:hover:bg-slate-800 rounded-lg transition-all"
+                    className="block px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-orange-600 hover:bg-orange-50 dark:hover:bg-slate-800 rounded-lg transition-all focus:ring-2 focus:ring-orange-500 focus:outline-none"
                   >
                     {t[link.key]}
                   </a>

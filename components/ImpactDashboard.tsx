@@ -1,9 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, BarChart3 } from "lucide-react";
 
 export default function ImpactDashboard() {
+  const metrics = [
+    { label: "Students Reached", value: "10,500+", icon: "👨‍🎓" },
+    { label: "Workshops Held", value: "215+", icon: "📋" },
+    { label: "Communities Served", value: "47", icon: "🏘️" },
+    { label: "Districts Covered", value: "6", icon: "🗺️" },
+  ];
+
   return (
     <section id="impact" className="section-padding bg-transparent">
       <div className="max-w-7xl mx-auto">
@@ -11,42 +17,30 @@ export default function ImpactDashboard() {
           <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-4">
             Our Impact
           </span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white">
-            Impact Dashboard
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-3">
+            Measured Impact
           </h2>
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            Real numbers from our grassroots financial literacy programs across rural India.
+          </p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-center justify-center min-h-[380px] bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl p-12"
-        >
-          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg mb-6">
-            <BarChart3 className="text-white" size={36} />
-          </div>
-
-          <div className="flex items-center gap-2.5 mb-4">
-            <Clock className="text-blue-500 shrink-0" size={22} />
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Coming Soon</h3>
-          </div>
-
-          <p className="text-slate-500 dark:text-slate-400 text-lg text-center max-w-md leading-relaxed">
-            We are actively collecting and verifying our impact data. Real numbers, real stories &mdash; coming soon.
-          </p>
-
-          <div className="flex flex-wrap gap-3 mt-8 justify-center">
-            {["Students Reached", "Workshops Held", "Communities Served", "Districts Covered"].map((label) => (
-              <div
-                key={label}
-                className="px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl text-sm font-medium text-slate-500 dark:text-slate-400 border border-slate-100 dark:border-slate-700 text-center"
-              >
-                {label}
-              </div>
-            ))}
-          </div>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {metrics.map((metric, idx) => (
+            <motion.div
+              key={metric.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-100 dark:border-slate-800 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="text-5xl mb-4">{metric.icon}</div>
+              <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">{metric.label}</p>
+              <p className="text-4xl font-extrabold text-slate-900 dark:text-white">{metric.value}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -5,7 +5,6 @@ import ProgramsSection from "@/components/ProgramsSection";
 import ImpactDashboard from "@/components/ImpactDashboard";
 import VolunteerSection from "@/components/VolunteerSection";
 import DonationSection from "@/components/DonationSection";
-import PartnersSection from "@/components/PartnersSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -20,7 +19,6 @@ export default function Home() {
       <ImpactDashboard />
       <VolunteerSection />
       <DonationSection />
-      <PartnersSection />
       <TeamSection />
       <ContactSection />
       <Footer />

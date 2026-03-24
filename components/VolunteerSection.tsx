@@ -50,31 +50,52 @@ export default function VolunteerSection() {
 
   return (
     <section id="volunteer" className="section-padding bg-transparent">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65 }}
-          className="text-center mb-10"
+          className="text-center mb-14"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-4">
             Get Involved
           </span>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
-            Join Us
+            Join Us as a Volunteer
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400">
             Become a part of the ClenorX Foundation and help us spread financial literacy across rural India.
           </p>
         </motion.div>
 
+        {/* Volunteer Opportunities */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {[
+            { title: "Workshop Facilitator", desc: "Lead financial literacy workshops in rural communities. Help teach budgeting, savings, and digital banking basics." },
+            { title: "Content Creator", desc: "Create engaging educational materials, videos, and infographics about financial literacy for our audience." },
+            { title: "Community Ambassador", desc: "Connect with villages and Self-Help Groups. Build relationships and identify community needs." },
+          ].map((role, idx) => (
+            <motion.div
+              key={role.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-6 border border-blue-100 dark:border-slate-700"
+            >
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{role.title}</h3>
+              <p className="text-sm text-slate-700 dark:text-slate-300">{role.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.65, delay: 0.1 }}
-          className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-100 dark:border-slate-800"
+          transition={{ duration: 0.65, delay: 0.2 }}
+          className="max-w-2xl mx-auto bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-100 dark:border-slate-800"
         >
           {done ? (
             <div className="flex flex-col items-center gap-5 py-8">

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Copy, CheckCheck, Heart, QrCode } from "lucide-react";
+import { Copy, CheckCheck, Heart, QrCode, Check } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
 import { useLang } from "@/components/LangProvider";
@@ -73,18 +73,19 @@ export default function DonationSection() {
               />
             </div>
             <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-6">Choose Amount</h3>
-            <div className="grid grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
               {AMOUNTS.map((amount) => (
                 <button
                   key={amount}
                   onClick={() => { setSelectedAmount(amount); setCustomAmount(""); }}
-                  className={`py-3 rounded-2xl font-bold text-sm transition-all ${
+                  className={`py-3 rounded-2xl font-bold text-sm transition-all focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 focus:outline-none flex items-center justify-center gap-1 ${
                     selectedAmount === amount
-                      ? "text-white shadow-lg"
+                      ? "text-white shadow-lg ring-2 ring-orange-500"
                         : "bg-orange-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-orange-100 dark:hover:bg-slate-700"
                   }`}
                   style={selectedAmount === amount ? { background: "#F59E0B" } : undefined}
                 >
+                  {selectedAmount === amount && <Check size={16} />}
                   ₹{amount.toLocaleString()}
                 </button>
               ))}
@@ -97,9 +98,16 @@ export default function DonationSection() {
                 value={customAmount}
                 onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(null); }}
                 placeholder="Enter amount in ₹"
-                className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white placeholder:text-slate-400 focus:border-orange-400 focus:outline-none transition-colors"
+                className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-800 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-orange-500 focus:outline-none transition-colors ${
+                  customAmount && Number(customAmount) < 1
+                    ? "border-red-500 dark:border-red-400"
+                    : "border-slate-200 dark:border-slate-700"
+                }`}
                 min="1"
               />
+              {customAmount && Number(customAmount) < 1 && (
+                <p className="text-xs text-red-500 mt-1">Amount must be at least 1</p>
+              )}
             </div>
 
             {/* Impact info */}
@@ -163,12 +171,7 @@ export default function DonationSection() {
               <Copy size={16} /> Copy All Details
             </button>
 
-            {/* 80G note */}
-            <div className="mt-4 p-4 rounded-2xl bg-green-500/10 border border-green-500/20">
-              <p className="text-green-400 text-sm font-medium">
-                ✅ Donations are eligible for 80G tax exemption under Indian Income Tax Act.
-              </p>
-            </div>
+            {/* 80G note removed as requested */}
           </motion.div>
         </div>
 

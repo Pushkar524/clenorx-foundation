@@ -21,11 +21,11 @@ const QUICK_LINKS = [
 ];
 
 const SOCIALS = [
-  { icon: Facebook, href: "#", label: "Facebook", color: "hover:bg-blue-600" },
-  { icon: Twitter, href: "#", label: "Twitter / X", color: "hover:bg-sky-500" },
-  { icon: Instagram, href: "#", label: "Instagram", color: "hover:bg-pink-600" },
+  { icon: Facebook, href: "https://www.facebook.com/ClenorXFoundation", label: "Facebook", color: "hover:bg-blue-600" },
+  { icon: Twitter, href: "https://twitter.com/ClenorXStudio", label: "Twitter / X", color: "hover:bg-sky-500" },
+  { icon: Instagram, href: "https://www.instagram.com/clenorx.foundation", label: "Instagram", color: "hover:bg-pink-600" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/clenorxfoundation", label: "LinkedIn", color: "hover:bg-blue-700" },
-  { icon: Youtube, href: "#", label: "YouTube", color: "hover:bg-red-600" },
+  { icon: Youtube, href: "https://www.youtube.com/@ClenorXFoundation", label: "YouTube", color: "hover:bg-red-600" },
 ];
 
 export default function Footer() {
