@@ -206,7 +206,7 @@ export default function AboutUsSection({
   return (
     <section
       ref={sectionRef}
-      className="w-full py-24 px-4 overflow-hidden relative bg-transparent text-slate-900 dark:text-white"
+      className="w-full py-12 px-4 overflow-hidden relative bg-transparent text-slate-900 dark:text-white"
     >
       {/* Decorative blobs */}
       <motion.div className="absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl" style={{ background: "rgba(245,158,11,0.08)", y: y1, rotate: rotate1 }} />
@@ -267,7 +267,7 @@ export default function AboutUsSection({
 
         {/* CTA */}
         <motion.div
-          className="mt-20 p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 text-white bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-600 dark:to-orange-700"
+          className="mt-8 p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 text-white bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-600 dark:to-orange-700"
           initial={{ opacity: 0, y: 30 }}
           animate={isStatsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.5 }}

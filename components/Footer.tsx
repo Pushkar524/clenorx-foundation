@@ -11,12 +11,8 @@ import { translations } from "@/lib/i18n";
 const QUICK_LINKS = [
   { label: "About Us", href: "#about" },
   { label: "Programs", href: "#programs" },
-  { label: "Impact Dashboard", href: "#impact" },
-  { label: "Financial Quiz", href: "#quiz" },
-  { label: "Budget Calculator", href: "#calculator" },
   { label: "Volunteer", href: "#volunteer" },
   { label: "Donate", href: "#donate" },
-  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -48,7 +44,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <a href="#home" className="inline-block mb-5">
@@ -94,23 +90,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-white font-bold mb-5">More</h4>
-            <ul className="space-y-2.5">
-              {QUICK_LINKS.slice(5).map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 group"
-                  >
-                    <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Contact + Newsletter */}
           <div>
             <h4 className="text-white font-bold mb-5">Contact Us</h4>
@@ -128,8 +107,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail size={14} className="text-amber-400 shrink-0" />
-                <a href="mailto:clenorxfoundation30@gmail.com" className="text-slate-400 hover:text-amber-400 transition-colors text-xs break-all">
-                  clenorxfoundation30@gmail.com
+                <a href="mailto:pavan@clenorx.in" className="text-slate-400 hover:text-amber-400 transition-colors text-xs break-all">
+                  pavan@clenorx.in
                 </a>
               </li>
             </ul>

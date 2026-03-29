@@ -21,14 +21,14 @@ export function TestimonialsWithMarquee({
   return (
     <section
       className={cn(
-        "bg-background text-foreground",
-        "py-12 sm:py-24 px-0",
+        "bg-transparent text-foreground",
+        "py-0 sm:py-4 px-0",
         className
       )}
     >
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-4 text-center sm:gap-16">
+      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-3 text-center sm:gap-6">
         {/* Heading */}
-        <div className="flex flex-col items-center gap-4 px-4 sm:gap-6">
+        <div className="flex flex-col items-center gap-2 px-4 sm:gap-3">
           <h2 className="max-w-[720px] text-3xl font-bold leading-tight sm:text-5xl sm:leading-tight text-[#1E3A5F] dark:text-slate-100">
             {title}
           </h2>

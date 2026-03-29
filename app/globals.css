@@ -1,17 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #FFFFFF;
+  --background: #F8FAFC;
   --foreground: #1E3A5F;
   --primary: #F59E0B;
   --secondary: #3B82F6;
   --accent: #EF4444;
-}
-
-.dark {
-  --background: #0F172A;
-  --foreground: #F1F5F9;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -26,72 +24,24 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at top left, rgba(245, 158, 11, 0.08), transparent 28%),
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 26%),
+    linear-gradient(180deg, #FFF7ED 0%, #F8FAFC 50%, #F8FAFC 100%);
   color: var(--foreground);
-  font-family: "Inter", sans-serif;
+  font-family: "Oswald", sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
   position: relative;
   overflow-x: hidden;
-}
-
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  inset: -20%;
-  pointer-events: none;
-  z-index: -2;
-}
-
-body::before {
-  background:
-    radial-gradient(circle at 14% 20%, rgba(245, 158, 11, 0.20), transparent 28%),
-    radial-gradient(circle at 86% 18%, rgba(59, 130, 246, 0.18), transparent 30%),
-    radial-gradient(circle at 24% 84%, rgba(244, 114, 182, 0.12), transparent 30%),
-    radial-gradient(circle at 78% 76%, rgba(16, 185, 129, 0.14), transparent 30%);
-  filter: blur(8px);
-  animation: auroraFloat 18s ease-in-out infinite alternate;
-}
-
-body::after {
-  z-index: -1;
-  opacity: 0.4;
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(30, 58, 95, 0.12) 1px, transparent 0);
-  background-size: 28px 28px;
-  animation: gridDrift 24s linear infinite;
-}
-
-.dark body::before {
-  background:
-    radial-gradient(circle at 14% 20%, rgba(245, 158, 11, 0.16), transparent 26%),
-    radial-gradient(circle at 86% 18%, rgba(59, 130, 246, 0.16), transparent 28%),
-    radial-gradient(circle at 24% 84%, rgba(45, 212, 191, 0.12), transparent 28%),
-    radial-gradient(circle at 78% 76%, rgba(236, 72, 153, 0.10), transparent 28%);
-}
-
-.dark body::after {
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(226, 232, 240, 0.12) 1px, transparent 0);
-  opacity: 0.22;
-}
-
-@keyframes auroraFloat {
-  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-  50% { transform: translate3d(2%, -1.5%, 0) scale(1.05) rotate(3deg); }
-  100% { transform: translate3d(-2%, 2%, 0) scale(1.02) rotate(-2deg); }
-}
-
-@keyframes gridDrift {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(28px, 28px, 0); }
+  color-scheme: light;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 /* Consistent typography */
@@ -137,11 +87,6 @@ body, p {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.dark .glass {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Swiper custom */

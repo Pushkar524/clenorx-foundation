@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ForceLightMode } from "@/components/ForceLightMode";
 import { LangProvider } from "@/components/LangProvider";
 import { Toaster } from "sonner";
 
@@ -35,14 +35,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider>
-          <LangProvider>
-            {children}
-            <Toaster richColors position="top-right" />
-          </LangProvider>
-        </ThemeProvider>
+    <html lang="en" className="light" data-theme="light" suppressHydrationWarning style={{ colorScheme: "light" }}>
+      <body className="light bg-background text-foreground" style={{ colorScheme: "light" }}>
+        <ForceLightMode />
+        <LangProvider>
+          {children}
+          <Toaster richColors position="top-right" />
+        </LangProvider>
       </body>
     </html>
   );

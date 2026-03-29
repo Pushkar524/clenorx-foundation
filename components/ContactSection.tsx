@@ -43,7 +43,7 @@ export default function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "clenorxfoundation30@gmail.com",
+      value: "pavan@clenorx.in",
       color: "text-amber-600",
       bg: "bg-amber-50",
     },

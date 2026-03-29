@@ -10,10 +10,10 @@ import { translations } from "@/lib/i18n";
 
 const BANK_DETAILS = [
   { label: "Account Name", value: "ClenorX Foundation" },
-  { label: "Account Number", value: "1234 5678 9012" },
-  { label: "IFSC Code", value: "SBIN0001234" },
-  { label: "Bank", value: "State Bank of India" },
-  { label: "Branch", value: "Shikaripura" },
+  { label: "Account Number", value: "10271832048" },
+  { label: "IFSC Code", value: "IDFB0080471" },
+  { label: "Bank", value: "IDFC First Bank" },
+  { label: "Branch", value: "Shivamogga" },
   { label: "UPI ID", value: "clenorx@sbi" },
 ];
 

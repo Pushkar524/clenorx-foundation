@@ -1,91 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Nunito } from "next/font/google";
+import { Archivo_Black } from "next/font/google";
+import { BlurredStagger } from "@/components/ui/blurred-stagger-text";
 
-const nunito = Nunito({
+const archivoBlack = Archivo_Black({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: "400",
   display: "swap",
 });
 
-function Counter({ target, suffix }: { target: number; suffix: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          const step = target / (2000 / 16);
-          let cur = 0;
-          const t = setInterval(() => {
-            cur += step;
-            if (cur >= target) { setCount(target); clearInterval(t); }
-            else setCount(Math.floor(cur));
-          }, 16);
-        }
-      },
-      { threshold: 0.5 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [target]);
-  return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
-}
-
 export default function HeroSection() {
   const companyName = "ClenorX Foundation";
-  const [typedName, setTypedName] = useState("");
-
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      index += 1;
-      setTypedName(companyName.slice(0, index));
-      if (index >= companyName.length) {
-        clearInterval(interval);
-      }
-    }, 85);
-
-    return () => clearInterval(interval);
-  }, [companyName]);
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden bg-white dark:bg-slate-950 pt-20 lg:pt-32">
-
-      {/* ── Floating gradient blobs ── */}
-      <div className="bg-blob blob-animate w-80 h-80 rounded-full" style={{ background: "#BFDBFE", top: "-4rem", left: "-5rem" }} />
-      <div className="bg-blob blob-animate w-96 h-96 rounded-full" style={{ background: "#FEF3C7", top: "40%", right: "-8rem", animationDelay: "4s" }} />
-      <div className="bg-blob w-72 h-72 rounded-full" style={{ background: "#DBEAFE", bottom: "0", left: "30%" }} />
-
-      {/* ── Decorative background floating shapes ── */}
-      {/* Decorative shapes (hearts removed) */}
-
-      {/* Colored dots - reduced for cleaner look */}
-      <motion.div animate={{ y: [0, -10, 0], opacity: [0.35, 0.7, 0.35] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-36 left-[30%] w-4 h-4 rounded-full bg-blue-300" />
-      <motion.div animate={{ y: [0, 8, 0], opacity: [0.4, 0.75, 0.4] }} transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.9 }} className="absolute top-72 left-[5%] w-3 h-3 rounded-full bg-orange-300" />
-
-      {/* SVG stars - removed for cleaner look */}
-
-      {/* Flower / plus shapes - kept for visual interest */}
-      <motion.svg animate={{ y: [0, -12, 0], rotate: [0, 12, 0] }} transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[45%] left-[3%] w-8 h-8 opacity-35" viewBox="0 0 24 24" fill="#3B82F6">
-        <circle cx="12" cy="7" r="3" /><circle cx="12" cy="17" r="3" />
-        <circle cx="7" cy="12" r="3" /><circle cx="17" cy="12" r="3" />
-        <circle cx="12" cy="12" r="2" />
-      </motion.svg>
-      <motion.svg animate={{ y: [0, 10, 0], rotate: [0, -14, 0] }} transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.7 }} className="absolute bottom-28 right-[30%] w-7 h-7 opacity-30" viewBox="0 0 24 24" fill="#F59E0B">
-        <circle cx="12" cy="7" r="3" /><circle cx="12" cy="17" r="3" />
-        <circle cx="7" cy="12" r="3" /><circle cx="17" cy="12" r="3" />
-        <circle cx="12" cy="12" r="2" />
-      </motion.svg>
+    <section id="home" className="relative min-h-screen overflow-hidden bg-transparent pt-4 lg:pt-8">
 
       {/* ── Main grid ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full py-12 lg:py-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-5rem)] flex items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full pt-6 lg:pt-12 pb-12 lg:pb-0">
 
           {/* LEFT: Text content */}
           <div className="order-1 lg:order-1">
@@ -93,18 +27,12 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
-              className="mb-6 mt-2"
+              className="mb-6 mt-0"
             >
-              <h1
-                className={`${nunito.className} font-extrabold text-4xl sm:text-5xl xl:text-6xl leading-tight tracking-tight text-slate-900 dark:text-slate-50 [text-shadow:0_2px_10px_rgba(15,23,42,0.14)]`}
-                aria-label={companyName}
-              >
-                {typedName}
-                <span
-                  className="ml-1 inline-block h-[0.9em] w-[2px] align-middle bg-orange-500/90 animate-pulse"
-                  aria-hidden="true"
-                />
-              </h1>
+              <BlurredStagger
+                text={companyName}
+                className={`${archivoBlack.className} text-4xl sm:text-5xl xl:text-6xl leading-tight tracking-tight text-slate-900 dark:text-slate-50 [text-shadow:0_2px_10px_rgba(15,23,42,0.14)]`}
+              />
               <div className="w-24 h-1 rounded-full bg-orange-500/80 mt-4" />
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-4 max-w-lg font-medium">
                 Empowering children and communities through practical financial literacy.
@@ -146,12 +74,6 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="order-2 lg:order-2 relative flex items-center justify-center"
           >
-            {/* Glow blob behind image */}
-            <div
-              className="absolute inset-0 rounded-[3rem] blur-3xl opacity-30 scale-105"
-              style={{ background: "radial-gradient(ellipse at center, #FDE68A 0%, #BFDBFE 60%, transparent 100%)" }}
-            />
-
             {/* Main image container */}
             <div className="relative w-full max-w-lg">
               {/* Large rounded card */}
@@ -213,12 +135,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
-        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F8FAFC" />
-        </svg>
-      </div>
     </section>
   );
 }
